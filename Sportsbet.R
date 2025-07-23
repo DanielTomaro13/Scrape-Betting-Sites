@@ -32,6 +32,8 @@ fetch_sportsbet_summary <- function(event_id) {
     tibble(
       market_id      = market$`@id`,
       market_name    = market$`@name`,
+      date_released = market$`@lastUpdateDate`,
+      time_released = market$`@lastUpdateTime`,
       num_selections = if (is.data.frame(outcomes)) nrow(outcomes) else 0
     )
   })
@@ -47,6 +49,8 @@ fetch_sportsbet_summary <- function(event_id) {
       event_name   = event$`@name`,
       market_id    = market$`@id`,
       market_name  = market$`@name`,
+      date_released = market$`@lastUpdateDate`,
+      time_released = market$`@lastUpdateTime`,
       outcome_id   = outcomes$`@id`,
       outcome_name = outcomes$`@name`,
       win_odds     = suppressWarnings(as.numeric(outcomes$`@oddsDecimal`)),
